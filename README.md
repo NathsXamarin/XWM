@@ -1,2 +1,2 @@
 # XWM
- Github repositry frof XWM (Xamarin, Webserver and MySQL)
+ Github repository for XWM (Xamarin, Webserver and MySQL)
