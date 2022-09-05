@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "wgVhpliaUxmnYeYMPObUvx8v5/n/ctxquimQ8gXJVrO3MdCxEhLIvjIaJ5k2VRpvht37EVI4clj3Fz6FI9qBQg==",
+  "success": true,
+  "projectFilePath": "D:\\XWM\\xamarin\\TUFCv3\\TUFCv3.iOS\\TUFCv3.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\natha\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\xamarin.essentials\\1.7.3\\xamarin.essentials.1.7.3.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\xamarin.forms\\5.0.0.2515\\xamarin.forms.5.0.0.2515.nupkg.sha512"
+  ],
+  "logs": []
+}
