@@ -1,5 +1,3 @@
-D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\mscorlib.pdb
-D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.arm64-v8a.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\bin\Debug\TUFCv3.Android.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\bin\Debug\TUFCv3.Android.pdb
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\bin\Debug\com.companyname.tufcv3.apk
@@ -75,6 +73,7 @@ D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\Mono.Android.p
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\Mono.Security.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\Mono.Security.pdb
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\mscorlib.dll
+D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\mscorlib.pdb
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\MySqlConnector.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\netstandard.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\System.AppContext.dll
@@ -635,6 +634,7 @@ D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\compressed_assemblies
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\compressed_assemblies.armeabi-v7a.ll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\compressed_assemblies.x86.ll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\compressed_assemblies.x86_64.ll
+D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.arm64-v8a.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.armeabi-v7a.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.x86.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.x86_64.o
