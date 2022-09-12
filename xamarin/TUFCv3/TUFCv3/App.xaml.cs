@@ -1,6 +1,6 @@
 ﻿using System;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms;
 
 namespace TUFCv3
 {
@@ -10,7 +10,8 @@ namespace TUFCv3
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            // MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());      // Allow page nagiation in the Xamarin app
         }
 
         protected override void OnStart()

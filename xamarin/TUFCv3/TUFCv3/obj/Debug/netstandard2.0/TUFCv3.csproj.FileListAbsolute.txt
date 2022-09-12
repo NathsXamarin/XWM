@@ -13,3 +13,4 @@ D:\XWM\xamarin\TUFCv3\TUFCv3\obj\Debug\netstandard2.0\TUFCv3.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3\obj\Debug\netstandard2.0\refint\TUFCv3.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3\obj\Debug\netstandard2.0\TUFCv3.pdb
 D:\XWM\xamarin\TUFCv3\TUFCv3\obj\Debug\netstandard2.0\ref\TUFCv3.dll
+D:\XWM\xamarin\TUFCv3\TUFCv3\obj\Debug\netstandard2.0\Additional\Archive\MySqlConn.xaml.g.cs
