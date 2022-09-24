@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TUFCv3.Views.Login"
+             xmlns:ViewModels="clr-namespace:TUFCv3.ViewModels"
+             xmlns:Views="clr-namespace:TUFCv3.Views" >
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White" Padding="20" >            
+            <StackLayout.BindingContext>
+                <ViewModels:vmLogin/>
+            </StackLayout.BindingContext>
+            
+            <Label Text="The Ultimate &#x0a; Fitness Companion" 
+                   FontSize="Large" HorizontalTextAlignment="Center"/>
+
+            <Image x:Name="flex"   Aspect="AspectFit"   HeightRequest="250" WidthRequest="250"    Margin="0,25" />
+
+            <Grid HorizontalOptions="CenterAndExpand" Padding="0,0,0,25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.7*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Email:"     Grid.Row="0" Grid.Column="0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center"    Padding="10" />
+                <Label Text="Password:"  Grid.Row="1" Grid.Column="0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center"    Padding="10" />
+
+                <Entry Text="{Binding user.Email}"     Grid.Row="0" Grid.Column="1"/>
+                <Entry Text="{Binding user.Password}"  Grid.Row="1" Grid.Column="1"   IsPassword="True" />
+            </Grid>
+
+            <Button Text="Login"      Command="{Binding cmdLogin}"      CommandParameter="{x:Type Views:MainMenu}"   Margin="75,10" />
+            <Button Text="New User"   Command="{Binding cmdNavigation}" CommandParameter="{x:Type Views:NewUser}"    Margin="75,10" />
+
+        </StackLayout>            
+    </ContentPage.Content>
+</ContentPage>

@@ -14,9 +14,17 @@ namespace TUFCv3
     {
         public MainPage()
         {
-            InitializeComponent();           
-            NavigateToMySqlConn();      // Navigate to to the page MySqlComm
+            InitializeComponent();
+            NavigateToLoginPage();
+            // NavigateToMySqlConn();       // Comment out, but DO NOT DELETE (Only used during database connectivity diagnostics)
         }
+
+
+        async void NavigateToLoginPage()
+        {
+            await Navigation.PushModalAsync(new Views.Login());        // Navigate to MySqlConn.xaml 
+        }
+
 
         async void NavigateToMySqlConn()
         {                                                  

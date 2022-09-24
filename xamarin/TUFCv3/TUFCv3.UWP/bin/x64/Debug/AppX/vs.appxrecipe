@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-06T20:35:02.828</Modified>
+      <Modified>2022-09-16T03:09:15.286</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\TUFCv3.UWP.exe">
       <PackagePath>entrypoint\TUFCv3.UWP.exe</PackagePath>
-      <Modified>2022-09-06T20:35:01.102</Modified>
+      <Modified>2022-09-16T03:09:14.366</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\natha\.nuget\packages\mysqlconnector\2.1.13\lib\netstandard2.0\MySqlConnector.dll">
       <PackagePath>MySqlConnector.dll</PackagePath>
@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3\bin\Debug\netstandard2.0\TUFCv3.dll">
       <PackagePath>TUFCv3.dll</PackagePath>
-      <Modified>2022-09-07T00:56:58.984</Modified>
+      <Modified>2022-09-16T03:09:07.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\natha\.nuget\packages\win2d.uwp\1.20.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
@@ -97,153 +97,153 @@
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.184</Modified>
+      <Modified>2022-09-12T02:24:57.945</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.189</Modified>
+      <Modified>2022-09-12T02:24:57.945</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.194</Modified>
+      <Modified>2022-09-12T02:24:57.945</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.199</Modified>
+      <Modified>2022-09-12T02:24:57.946</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.202</Modified>
+      <Modified>2022-09-12T02:24:57.946</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.206</Modified>
+      <Modified>2022-09-12T02:24:57.946</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.218</Modified>
+      <Modified>2022-09-12T02:24:57.946</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.221</Modified>
+      <Modified>2022-09-12T02:24:57.947</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.226</Modified>
+      <Modified>2022-09-12T02:24:57.947</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.231</Modified>
+      <Modified>2022-09-12T02:24:57.947</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.234</Modified>
+      <Modified>2022-09-12T02:24:57.948</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.238</Modified>
+      <Modified>2022-09-12T02:24:57.948</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.243</Modified>
+      <Modified>2022-09-12T02:24:57.948</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.246</Modified>
+      <Modified>2022-09-12T02:24:57.948</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.249</Modified>
+      <Modified>2022-09-12T02:24:57.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.251</Modified>
+      <Modified>2022-09-12T02:24:57.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.254</Modified>
+      <Modified>2022-09-12T02:24:57.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.257</Modified>
+      <Modified>2022-09-12T02:24:57.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.281</Modified>
+      <Modified>2022-09-12T02:24:57.950</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.285</Modified>
+      <Modified>2022-09-12T02:24:57.950</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.287</Modified>
+      <Modified>2022-09-12T02:24:57.950</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.292</Modified>
+      <Modified>2022-09-12T02:24:57.951</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.294</Modified>
+      <Modified>2022-09-12T02:24:57.951</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.296</Modified>
+      <Modified>2022-09-12T02:24:57.951</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.298</Modified>
+      <Modified>2022-09-12T02:24:57.951</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.301</Modified>
+      <Modified>2022-09-12T02:24:57.951</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-04T23:33:01.306</Modified>
+      <Modified>2022-09-12T02:24:57.952</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2022-09-04T23:33:01.312</Modified>
+      <Modified>2022-09-12T02:24:57.953</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\TUFCv3.UWP.xr.xml">
       <PackagePath>TUFCv3.UWP.xr.xml</PackagePath>
-      <Modified>2022-09-05T02:56:46.008</Modified>
+      <Modified>2022-09-12T02:24:58.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-09-06T20:35:01.055</Modified>
+      <Modified>2022-09-16T03:09:14.286</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-09-06T20:35:01.055</Modified>
+      <Modified>2022-09-16T03:09:14.286</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -259,11 +259,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-09-06T20:35:01.604</Modified>
+      <Modified>2022-09-15T01:05:17.553</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\Core\TUFCv3.UWP.exe">
       <PackagePath>TUFCv3.UWP.exe</PackagePath>
-      <Modified>2022-09-06T20:35:02.828</Modified>
+      <Modified>2022-09-16T03:09:15.282</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
