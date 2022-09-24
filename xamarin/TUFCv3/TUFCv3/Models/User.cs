@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using System;
 using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace TUFCv3.Models
 {
-    class User
+    public class User : INotifyPropertyChanged
     {
-        // Private Properties
+        // PRIVATE Properties
         private Int64 userId;
         private string email;
         private string password;
-        private DateTime createDate;
+        private string createDate;
         private string firstName;
         private string lastName;
         private string phoneMobile;
@@ -26,13 +26,14 @@ namespace TUFCv3.Models
         private string country;
 
 
+        // EVENT
         // PropertyChanged 
         //  An event handler, that updates bindings (including data on the device's screen)
         //  when a property changes.
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        // Public properties
+        // PUBLIC properties
         //  When setting public properties, call the method SetProperty() to update the complementry private variable
         //  which in turn calls the method OnPropertyChanged(), to update xmal page views.   
         public Int64 UserId
@@ -53,7 +54,7 @@ namespace TUFCv3.Models
             set { SetProperty(ref password, value); }
         }
             
-        public DateTime CreateDate
+        public string CreateDate
         {
             get { return createDate; }
             set { SetProperty(ref createDate, value); }
@@ -126,7 +127,7 @@ namespace TUFCv3.Models
         }
 
 
-        // SetProperty()
+        // SETPROPERTY()
         //  Update the private property, to match the public property
         //  then invoke the event handler PropertyChanged to update binding (including the screen). 
         // Arguments:
