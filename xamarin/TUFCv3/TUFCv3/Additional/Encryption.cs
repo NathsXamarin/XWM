@@ -41,7 +41,7 @@ namespace TUFCv3.Additional
 
 
         // EncryptString()
-        // Encrypt a message
+        // Encrypt a errorMessage
         public string EncryptString(string plainText)
         {
             MemoryStream memoryStream = new MemoryStream();                                                     // Memory stream
@@ -93,8 +93,8 @@ namespace TUFCv3.Additional
         // TestEncryption() - only used during testing 
         void TestEncryption()
         {
-            string encryptedMessage = this.EncryptString("Message to encode/decode");       // Encrypt a message
-            string decryptedMessage = this.DecryptString(encryptedMessage);                 // Decrypt the message
+            string encryptedMessage = this.EncryptString("Message to encode/decode");       // Encrypt a errorMessage
+            string decryptedMessage = this.DecryptString(encryptedMessage);                 // Decrypt the errorMessage
         }
     }
 }

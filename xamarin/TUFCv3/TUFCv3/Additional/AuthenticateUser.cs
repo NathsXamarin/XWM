@@ -20,24 +20,24 @@ namespace TUFCv3.Additional
         public User loginUser = new User();                     // User login details from the View 'Login' 
         public User databaseUser = new User();                  // User details from the database (compared to loginUser to authenticate)                                                                
 
-        public bool result;                                     // Authentication result 
-        public string message;                                  // Authentication message
+        public string errorMessage;                             // Authentication errorMessage
 
-        public void AuthenticationSequence(User _user)
+
+        public async Task<bool> Authenticate(User _user)
         {
             loginUser = _user;                  // User login details from the View 'Login'  
 
-                                                // Call methods to authenticate the user
-            if (!ConnectToMysql()
+            // Call methods to authenticate the user
+            if (   !ConnectToMysql()
                 || !GetUserData()
                 || !ComparePasswords())
-                return;                         //  If any the above methods fail, return to the calling class Logn.xaml
+                return false;                   //  If any the above methods fail, return false
             else
-            {
-                result = true;                  // Otherwise set result to true 
-                return;                         //  and return to the caller. 
+            {                 
+                return true;                    // Otherwise return true 
             }
         }
+
 
         public bool ConnectToMysql()
         {
@@ -56,8 +56,7 @@ namespace TUFCv3.Additional
             }
             catch(Exception ex)                 // If the connection fails
             {
-                result=false;               //  set result to false
-                message = ex.Message;       //  and set the error message
+                errorMessage = ex.Message;       //  and set the error errorMessage
                 return false;
             }
         }
@@ -72,15 +71,14 @@ namespace TUFCv3.Additional
             }
             catch (Exception ex)
             {
-                result=false;               //  set result to false
-                message =  ex.Message;      //  and set the error message
+                errorMessage =  ex.Message;      //  and set the error errorMessage
                 return false;
             }
 
             // Create the SELECT sqlCmd, that will be sent to the database,
             //  returning the user's email address, password and createDate
             string sqlCmd =
-                "SELECT email, password, createDate " +
+                "SELECT email, password, createDate, country " +
                 "FROM User " +
                 "WHERE email = @email ";
 
@@ -94,39 +92,28 @@ namespace TUFCv3.Additional
                     {
                         if(!reader.HasRows)                                     // If no data is returned for the email address            
                         {           
-                            result = false;                                 //  set result to false
-                            message = "Email does not exist";               //  and set the error message
+                            errorMessage = "Email does not exist";                   //  and set the error errorMessage
                             return false;                                       //  and return
                         }
 
-                        if (reader.Read())                                      // If the user id found, add the returned data to databaseUser properties
+                        if (reader.Read())                                              // If the user id found, add the returned data to databaseUser properties
                         {
-                            databaseUser.Email      = GetColumnValueAsString(reader, "email");          // To prevent 'null errors' when data is returned from the database 
-                            databaseUser.Password   = GetColumnValueAsString(reader, "password");       //  the method GetColumnValueAsString() converts null values 
-                            databaseUser.CreateDate = GetColumnValueAsString(reader, "createDate");     //  to an empty string 
+                            databaseUser.Email      = reader.GetValue(0).ToString();    // There is a method GetString(), but it causes errors  
+                            databaseUser.Password   = reader.GetValue(1).ToString();    //  when returning null values from the database.
+                            databaseUser.CreateDate = reader.GetValue(2).ToString();    // It's better to use GetValue() and ToString()
+                            databaseUser.Country    = reader.GetValue(3).ToString();    //  that way, if a database field is null, it is converted it to ""    
                         }
                     }
                 }
                 catch(Exception ex)                 // If getting a valid row from the database does not work
                 {
-                    result = false;             //  set result to false
-                    message = ex.Message;       //  and set the error message
+                    errorMessage = ex.Message;       //  and set the error errorMessage
                     return false;
                 }
             }
             return true;
         }
 
-
-        // GetColumnValueAsString()
-        // To prevent 'null errors' when values are returned from the database, convert them to empty strings.
-        string GetColumnValueAsString(MySqlDataReader reader, string colName)
-        {
-            if (reader[colName] == DBNull.Value)
-                return string.Empty;
-            else
-                return reader[colName].ToString();
-        }
 
 
         // ComparePasswords()
@@ -139,8 +126,7 @@ namespace TUFCv3.Additional
 
             if (encryptedLoginPassword != databaseUser.Password)        // If the user and database passwords don't match
             {
-                result = false;                                     //  set result to false
-                message = "Incorrect password";                     //  and set the error message
+                errorMessage = "Incorrect password";                     //  and set the error errorMessage
                 return false;                                             
             }
             else

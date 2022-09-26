@@ -10,6 +10,7 @@ using System;
 using System.Windows.Input;
 using TUFCv3.Models;
 using TUFCv3.Additional;
+using System.Threading.Tasks;
 
 namespace TUFCv3.ViewModels 
 {
@@ -18,15 +19,14 @@ namespace TUFCv3.ViewModels
         // Properties
         public User user { set; get; }
         public AuthenticateUser authenticateUser = new AuthenticateUser();
+        public Navigation navigation = new Navigation();
 
 
         // Constructor
         public vmLogin()
-        {         
-            user = new User();                      // Instantiate the object 'user' (which is bound to 'Login' entry fields)
-            authenticateUser.loginUser = user;      // Set the object 'user' in authenticateUser to the same as this class's 'user' object
-
-            DefineCommands();                       // Create commands for button events, triggered from the View 'Login.xaml' 
+        {
+            user = new User();          // Instantiate the object 'user' (which is bound to Login.xaml entry fields)
+            NavigationCommands();       // Create navigation commands for button click events 
         }
 
 
@@ -36,37 +36,30 @@ namespace TUFCv3.ViewModels
 
 
         // Command definitions
-        void DefineCommands()
+        void NavigationCommands()
         {
+            // cmdNavigation
+            cmdNavigation = new Command<Type>(
+                execute: async (Type selectedPage) =>
+                    await navigation.GoToPage(selectedPage));
+
+
             // cmdLogin
             // When the 'Login' button is pressed
             // authenticate the user, then navigate to the page 'MainMenu'
             cmdLogin = new Command<Type>(
-                execute: async (Type MainMenu) =>
-                {         
-                    authenticateUser.AuthenticationSequence(user);                      // Authenticate the user password with the database
-
-                    if (authenticateUser.result)                                    // If the passwords match:
+                execute: async (Type selectedPage) =>
+                {
+                    if (await authenticateUser.Authenticate(user))                                    // If the passwords match:
                     {
-                        Page page = (Page)Activator.CreateInstance(MainMenu);           //  create the page MainMenu()
+                        Page page = (Page)Activator.CreateInstance(selectedPage);           //  create the page MainMenu()
                         await App.Current.MainPage.Navigation.PushModalAsync(page);     //  and navigate to it.
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert                         // Otherwise, display the authentication error message.
-                        ("Login error", authenticateUser.message, "Okay");          
+                        await App.Current.MainPage.DisplayAlert                         // Otherwise, display the authentication error errorMessage.
+                        ("Login error", authenticateUser.errorMessage, "Okay");
                     }
-                });
-
-
-            // cmdNavigation
-            // This is a generic navigation command, triggered by a button press
-            //  which does not require authentication (eg to the view NewUser.xaml)
-            cmdNavigation = new Command<Type>(
-                execute: async (Type selectedPage) =>
-                {
-                    Page page = (Page)Activator.CreateInstance(selectedPage);       // Create the page
-                    await App.Current.MainPage.Navigation.PushModalAsync(page);     //  and navigate to it.
                 });
         }
     }
