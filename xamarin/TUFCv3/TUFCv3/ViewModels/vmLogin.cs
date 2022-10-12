@@ -17,16 +17,15 @@ namespace TUFCv3.ViewModels
     public class vmLogin
     {
         // Properties
-        public User user { set; get; }
-        public AuthenticateUser authenticateUser = new AuthenticateUser();
-        public Navigation navigation = new Navigation();
+        public User user { set; get; }                                          // Login user
+        public Navigation navigation = new Navigation();                        // Navigates to another page
 
 
         // Constructor
         public vmLogin()
         {
             user = new User();          // Instantiate the object 'user' (which is bound to Login.xaml entry fields)
-            NavigationCommands();       // Create navigation commands for button click events 
+            DefineNavigationCommands();       // Create navigation commands for button click events 
         }
 
 
@@ -36,28 +35,32 @@ namespace TUFCv3.ViewModels
 
 
         // Command definitions
-        void NavigationCommands()
+        void DefineNavigationCommands()
         {
-            // cmdNavigation
+            // cmdNavigation()
+            /*  Generic navigation call
+                - used to navigate to the page NewUser */
             cmdNavigation = new Command<Type>(
                 execute: async (Type selectedPage) =>
                     await navigation.GoToPage(selectedPage));
 
 
-            // cmdLogin
-            // When the 'Login' button is pressed
-            // authenticate the user, then navigate to the page 'MainMenu'
+            // cmdLogin()
+            /*  When the 'Login' button is pressed
+                authenticate the user, then navigate to the page 'MainMenu' */     
             cmdLogin = new Command<Type>(
                 execute: async (Type selectedPage) =>
                 {
-                    if (await authenticateUser.Authenticate(user))                                    // If the passwords match:
+                    AuthenticateUser authenticateUser = new AuthenticateUser();         // Create AuthenticateUser object 
+                    bool authenticated = await authenticateUser.Authenticate(user);     // Check password
+
+                    if (authenticated)                                                  // If the password is okay:
                     {
-                        Page page = (Page)Activator.CreateInstance(selectedPage);           //  create the page MainMenu()
-                        await App.Current.MainPage.Navigation.PushModalAsync(page);     //  and navigate to it.
+                        await navigation.GoToPage(selectedPage);                        //  - go to MainMenu
                     }
                     else
-                    {
-                        await App.Current.MainPage.DisplayAlert                         // Otherwise, display the authentication error errorMessage.
+                    {                                                                   // If password doesn't match:
+                        await App.Current.MainPage.DisplayAlert                         //   - display the authentication error errorMessage.
                         ("Login error", authenticateUser.errorMessage, "Okay");
                     }
                 });

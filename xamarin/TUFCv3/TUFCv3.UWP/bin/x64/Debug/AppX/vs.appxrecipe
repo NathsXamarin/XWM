@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>271A52C4A6347AD0C24D917601C01FC8225C6B07916A14BF74A6703980638665</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>6A505C3CD492A6167DE9AC1C0596CAF306DAEFDC4993ED82503C5446F6A7A78F</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>E9FAF467-63E9-4E0A-AE44-79A4E1CA2517_1.0.0.0_x64__ebyzax6pqjjj4</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>E9FAF467-63E9-4E0A-AE44-79A4E1CA2517_ebyzax6pqjjj4!App</RegisteredUserModeAppID>
     <RegisteredPackageID>E9FAF467-63E9-4E0A-AE44-79A4E1CA2517</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-16T03:09:15.286</Modified>
+      <Modified>2022-09-30T02:31:47.904</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\TUFCv3.UWP.exe">
       <PackagePath>entrypoint\TUFCv3.UWP.exe</PackagePath>
-      <Modified>2022-09-16T03:09:14.366</Modified>
+      <Modified>2022-09-30T02:31:46.197</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\natha\.nuget\packages\mysqlconnector\2.1.13\lib\netstandard2.0\MySqlConnector.dll">
       <PackagePath>MySqlConnector.dll</PackagePath>
@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3\bin\Debug\netstandard2.0\TUFCv3.dll">
       <PackagePath>TUFCv3.dll</PackagePath>
-      <Modified>2022-09-16T03:09:07.635</Modified>
+      <Modified>2022-10-02T23:09:29.305</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\natha\.nuget\packages\win2d.uwp\1.20.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
       <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
@@ -239,11 +239,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-09-16T03:09:14.286</Modified>
+      <Modified>2022-09-30T02:31:46.135</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-09-16T03:09:14.286</Modified>
+      <Modified>2022-09-30T02:31:46.135</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -259,11 +259,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-09-15T01:05:17.553</Modified>
+      <Modified>2022-09-30T02:31:46.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\bin\x64\Debug\Core\TUFCv3.UWP.exe">
       <PackagePath>TUFCv3.UWP.exe</PackagePath>
-      <Modified>2022-09-16T03:09:15.282</Modified>
+      <Modified>2022-09-30T02:31:47.901</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -6,52 +6,53 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace TUFCv3.Additional
+namespace TUFCv3.Additional.Encryption
 {
-    public class Encryption
-    {      
-        Aes encryptor;      // The encryption object, configured for CBC (includes the key and IV) 
+    public class EncryptionCbc
+    {
+        Aes encryptor;                          // The encryption object, configured for Cipher Block Chain. 
 
-        public Encryption()
+        public EncryptionCbc()
         {
-            string password = "password!";                  
+            string password = "password!";      // Static encryption password                    
             string iv = "TopSecretVector!";     // On a live system 'iv' should be randomly generated and saved to a secure location.
-         
+
             CreateEncryptor(password, iv);      // Create the object 'encryptor'                
             TestEncryption();                   // Test the encryption method ('comment out', but do not delete) 
         }
 
 
-        // CreateEncryptor()
-        // Create the object 'encryptor', that will be used to encode/decode messages   
+
+        /*  CreateEncryptor()
+            Create and configure the object 'encryptor'
+            that encodes/decodes messages  */
         void CreateEncryptor(string password, string iv)
         {
-            SHA256 sha256 = SHA256Managed.Create();                                 // Create a Secure Hashing Algorithm
-            byte[] key = sha256.ComputeHash(Encoding.ASCII.GetBytes(password));     // Create the hash key, using 'password'
-            byte[] ivBytes = Encoding.ASCII.GetBytes(iv);                           // Convert the 'iv' to a byte array
-                                                                            
-            encryptor = Aes.Create();               // Create the Advanced Encryption Standard (AES) object 'encryptor'
-            encryptor.Mode = CipherMode.CBC;        // Set encryption method to Cyclic Block Chain (CBC)
+            encryptor = Aes.Create();                                               // Create the AES encryption object.
+            encryptor.Mode = CipherMode.CBC;                                        // Set encryption method to Cyclic Block Chain.
 
-            byte[] aesKey = new byte[32];
-            Array.Copy(key, 0, aesKey, 0, 32);      // Copy the hashed password 'key' to the byte array 'aesKey'  
-            encryptor.Key = aesKey;                 // Set 'aesKey' as the the encryption key 
-            encryptor.IV = ivBytes;                 //  and ivBytes as the initialization vector 
+            SHA256 sha256 = SHA256.Create();                                 // Set the Key.
+            byte[] key = sha256.ComputeHash(Encoding.ASCII.GetBytes(password));
+            encryptor.Key = key;
+
+            byte[] ivBytes = Encoding.ASCII.GetBytes(iv);                           // Set the IV.
+            encryptor.IV = ivBytes;
         }
 
 
-        // EncryptString()
-        // Encrypt a errorMessage
-        public string EncryptString(string plainText)
+
+        /*  EncryptText()
+            Encrypt text  */
+        public string EncryptText(string plainText)
         {
             MemoryStream memoryStream = new MemoryStream();                                                     // Memory stream
             ICryptoTransform aesEncryptor = encryptor.CreateEncryptor();                                        // Set the transform to encrypt
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, aesEncryptor, CryptoStreamMode.Write);   // Encryption stream
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, aesEncryptor, CryptoStreamMode.Write);   // EncryptionCbc stream
 
             byte[] plainBytes = Encoding.ASCII.GetBytes(plainText);     // Convert the original string to the byte array 'plainbytes' 
             cryptoStream.Write(plainBytes, 0, plainBytes.Length);       // Encrypt the array using CBC
             cryptoStream.FlushFinalBlock();
-            byte[] cipherBytes = memoryStream.ToArray();                
+            byte[] cipherBytes = memoryStream.ToArray();
 
             memoryStream.Close();
             cryptoStream.Close();
@@ -62,14 +63,15 @@ namespace TUFCv3.Additional
         }
 
 
-        // DecryptString()
-        string DecryptString(string cipherText)
+        /* DecryptText()
+            Decrypt encrypted text  */
+        string DecryptText(string cipherText)
         {
+            string plainText = string.Empty;        // Will contain the decrypted text
+
             MemoryStream memoryStream = new MemoryStream();                                                     // Memory stream
             ICryptoTransform aesDecryptor = encryptor.CreateDecryptor();                                        // Set the transform to decrypt
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, aesDecryptor, CryptoStreamMode.Write);   // Encryption stream
-
-            string plainText = String.Empty;        // Will contain the decrypted plain text
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, aesDecryptor, CryptoStreamMode.Write);   // EncryptionCbc stream
 
             try
             {
@@ -81,8 +83,8 @@ namespace TUFCv3.Additional
                 plainText = Encoding.ASCII.GetString(plainBytes, 0, plainBytes.Length);     // Convert the decrypted byte array to a string
             }
             finally
-            {                
-                memoryStream.Close();           
+            {
+                memoryStream.Close();
                 cryptoStream.Close();
             }
 
@@ -93,8 +95,8 @@ namespace TUFCv3.Additional
         // TestEncryption() - only used during testing 
         void TestEncryption()
         {
-            string encryptedMessage = this.EncryptString("Message to encode/decode");       // Encrypt a errorMessage
-            string decryptedMessage = this.DecryptString(encryptedMessage);                 // Decrypt the errorMessage
+            string encryptedMessage = EncryptText("Message to encrypt/decrypt");     // Encrypt a errorMessage
+            string decryptedMessage = DecryptText(encryptedMessage);                 // Decrypt the errorMessage
         }
     }
 }

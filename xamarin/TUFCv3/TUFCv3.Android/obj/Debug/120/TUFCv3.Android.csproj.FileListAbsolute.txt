@@ -1,3 +1,5 @@
+D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.x86_64.ll
+D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\app_shared_libraries\arm64-v8a\libxamarin-app.so
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\bin\Debug\TUFCv3.Android.dll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\bin\Debug\TUFCv3.Android.pdb
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\bin\Debug\com.companyname.tufcv3.apk
@@ -247,7 +249,6 @@ D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\assets\Xamarin.Google
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.arm64-v8a.ll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.armeabi-v7a.ll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.x86.ll
-D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\typemaps.x86_64.ll
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\AndroidManifest.xml
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\AndroidManifest.xml
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\__environment__.txt
@@ -650,7 +651,6 @@ D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\jni_remap.arm64-v8a.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\jni_remap.armeabi-v7a.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\jni_remap.x86.o
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\android\jni_remap.x86_64.o
-D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\app_shared_libraries\arm64-v8a\libxamarin-app.so
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\app_shared_libraries\armeabi-v7a\libxamarin-app.so
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\app_shared_libraries\x86\libxamarin-app.so
 D:\XWM\xamarin\TUFCv3\TUFCv3.Android\obj\Debug\120\app_shared_libraries\x86_64\libxamarin-app.so

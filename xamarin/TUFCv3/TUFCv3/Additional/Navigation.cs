@@ -9,8 +9,8 @@ namespace TUFCv3.Additional
 {
     public class Navigation
     {
-        // public ICommand cmdNavigation { private set; get; }     // Triggered when the user presses the 'New User' button
-
+        /*  GoToPage()
+            Naviagate to a new page  */
         public async Task GoToPage(Type selectedPage)
         {
             Page page = (Page)Activator.CreateInstance(selectedPage);       // Create the page
