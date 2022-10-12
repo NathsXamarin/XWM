@@ -2,149 +2,76 @@
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using System.Data.Common;
-using Xamarin.Forms.Xaml;
 using MySqlConnector;
 using System;
+using TUFCv3.Additional.MySql;
+using System.Threading.Tasks;
+using Xamarin.Forms.Xaml;
 using TUFCv3.Models;
+using TUFCv3.Additional.Encryption;
 
 namespace TUFCv3.Additional
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public class AuthenticateUser
     {
-        MySqlConnection connection = new MySqlConnection();     // MySQL connection
+        private User databaseUser = new User();     // User details from the database (compared to loginUser to authenticate) 
+        public string errorMessage;                 // Authentication errorMessage
 
-        public User loginUser = new User();                     // User login details from the View 'Login' 
-        public User databaseUser = new User();                  // User details from the database (compared to loginUser to authenticate)                                                                
 
-        public bool result;                                     // Authentication result 
-        public string message;                                  // Authentication message
-
-        public void AuthenticationSequence(User _user)
+        /*  Authenticate()         
+            Call methods which:
+                - get user details from the database
+                - compares the user's login password with the one saved on the database
+                - if authenication is successful, return True.  */
+        public async Task<bool> Authenticate(User loginUser)
         {
-            loginUser = _user;                  // User login details from the View 'Login'  
-
-                                                // Call methods to authenticate the user
-            if (!ConnectToMysql()
-                || !GetUserData()
-                || !ComparePasswords())
-                return;                         //  If any the above methods fail, return to the calling class Logn.xaml
+            if (   !GetDatabaseUser(loginUser)          // If user details can not be retrieved from the database
+                || !ComparePasswords(loginUser))        //  or the login password is incorrect
+                return false;                           //  return False.
             else
-            {
-                result = true;                  // Otherwise set result to true 
-                return;                         //  and return to the caller. 
-            }
-        }
-
-        public bool ConnectToMysql()
-        {
-            // Create a MySqlConnection, using connection details for the server 'xwm-mysql' 
-            connection = new MySqlConnection(
-                "Server=xwm-mysql; " +
-                "Database=tufc; " +
-                "User ID=admin; " +
-                "Password=adm1n; "
-                );
-            try
-            {
-                connection.Open();              // Test the database connection by opeing it.              
-                connection.Close();             //  then close the connection 
-                return true;
-            }
-            catch(Exception ex)                 // If the connection fails
-            {
-                result=false;               //  set result to false
-                message = ex.Message;       //  and set the error message
-                return false;
+            {                                           // If the user's login password authenticates
+                return true;                            //  return True. 
             }
         }
 
 
-        bool GetUserData()
+        /*  GetDatabaseUser()
+            Call the method 'RunQuery'
+            to get user details from the database  */
+        bool GetDatabaseUser(User loginUser)
         {
-            // Connect to the server
-            try
+            MySql.GetLoginDetails getUser = new MySql.GetLoginDetails();        
+            databaseUser = getUser.RunQuery(loginUser);      // Get user object from the database.
+
+            if(databaseUser == null)                            // If the user can not be found: 
             {
-                connection.Open();
+                errorMessage = getUser.errorMessage;            //  - create error message
+                return false;                                   //  - and return False.
             }
-            catch (Exception ex)
-            {
-                result=false;               //  set result to false
-                message =  ex.Message;      //  and set the error message
-                return false;
-            }
-
-            // Create the SELECT sqlCmd, that will be sent to the database,
-            //  returning the user's email address, password and createDate
-            string sqlCmd =
-                "SELECT email, password, createDate " +
-                "FROM User " +
-                "WHERE email = @email ";
-
-            using (MySqlCommand command = new MySqlCommand(sqlCmd, connection))             // Create a MySqlCommand
-            {
-                command.Parameters.Add(new MySqlParameter("@email", loginUser.Email));      //  and include the users email address
-
-                try
-                {
-                    using (MySqlDataReader reader = command.ExecuteReader())    // Send the sqlCmd to the MySQL database
-                    {
-                        if(!reader.HasRows)                                     // If no data is returned for the email address            
-                        {           
-                            result = false;                                 //  set result to false
-                            message = "Email does not exist";               //  and set the error message
-                            return false;                                       //  and return
-                        }
-
-                        if (reader.Read())                                      // If the user id found, add the returned data to databaseUser properties
-                        {
-                            databaseUser.Email      = GetColumnValueAsString(reader, "email");          // To prevent 'null errors' when data is returned from the database 
-                            databaseUser.Password   = GetColumnValueAsString(reader, "password");       //  the method GetColumnValueAsString() converts null values 
-                            databaseUser.CreateDate = GetColumnValueAsString(reader, "createDate");     //  to an empty string 
-                        }
-                    }
-                }
-                catch(Exception ex)                 // If getting a valid row from the database does not work
-                {
-                    result = false;             //  set result to false
-                    message = ex.Message;       //  and set the error message
-                    return false;
-                }
-            }
-            return true;
+            return true;                                        // If user data is okay, return True.
         }
 
 
-        // GetColumnValueAsString()
-        // To prevent 'null errors' when values are returned from the database, convert them to empty strings.
-        string GetColumnValueAsString(MySqlDataReader reader, string colName)
+
+        /*  ComparePasswords()
+            Compare the login password 
+            to the encrypted password retrieved from the database
+            by encrypting the login password using the same algorithm  */
+        bool ComparePasswords(User loginUser)
         {
-            if (reader[colName] == DBNull.Value)
-                return string.Empty;
-            else
-                return reader[colName].ToString();
-        }
+            EncryptionCbc encryption = new EncryptionCbc();                                       
+            string encryptedLoginPassword = encryption.EncryptText(loginUser.Password);   // Encrypt the user's login password.
 
-
-        // ComparePasswords()
-        // Encrypt the password the user entered on the page 'Login'
-        //  and compare it to the encrypted password received from the database. 
-        bool ComparePasswords()
-        {
-            Encryption encryption = new Encryption();                                           // Create the encrypting object
-            string encryptedLoginPassword = encryption.EncryptString(loginUser.Password);       // Encrypt the password the user entered
-
-            if (encryptedLoginPassword != databaseUser.Password)        // If the user and database passwords don't match
-            {
-                result = false;                                     //  set result to false
-                message = "Incorrect password";                     //  and set the error message
-                return false;                                             
+            if (encryptedLoginPassword != databaseUser.Password)                            // If the login and database passwords do not match:
+            {                                                                               
+                errorMessage = "Incorrect password";                                        //   - create error message
+                return false;                                                               //   - return False.
             }
             else
-                return true;                                            // If the passwords match, return true.
+                return true;                                                                // If the passwords match, return True.
         }
     } 
 }

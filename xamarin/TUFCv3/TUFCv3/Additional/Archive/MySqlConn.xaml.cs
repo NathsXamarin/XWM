@@ -22,7 +22,7 @@ namespace TUFCv3.Additional.Archive
 
         public void ConnectToMysql()
         {
-            // Create a MySqlConnection, using the server xwm-mysql's connection details  (additional options:  Port=3306; SslMode=none)
+            // Create a MySqlConnection, using the server xwm-mysql's conn details  (additional options:  Port=3306; SslMode=none)
             connection = new MySqlConnection(
                 "Server=xwm-mysql;"+
                 "Database=tufc;" +
@@ -189,7 +189,7 @@ namespace TUFCv3.Additional.Archive
 
             lblUsers.Text = displayedString;
 
-            connection.Close();                                     // Close the connection
+            connection.Close();                                     // Close the conn
         }
     }
 }
