@@ -25,8 +25,8 @@
                 <Label Text="Email:"     Grid.Row="0" Grid.Column="0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center"    Padding="10" />
                 <Label Text="Password:"  Grid.Row="1" Grid.Column="0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center"    Padding="10" />
 
-                <Entry Text="{Binding user.Email}"     Grid.Row="0" Grid.Column="1"   Keyboard="Email"  />
-                <Entry Text="{Binding user.Password}"  Grid.Row="1" Grid.Column="1"   IsPassword="True" />
+                <Entry Text="{Binding loginUser.Email}"     Grid.Row="0" Grid.Column="1"   Keyboard="Email"  />
+                <Entry Text="{Binding loginUser.Password}"  Grid.Row="1" Grid.Column="1"   IsPassword="True" />
             </Grid>
 
             <Button Text="Login"      Command="{Binding cmdLogin}"      CommandParameter="{x:Type Views:MainMenu}"   Margin="75,10" />

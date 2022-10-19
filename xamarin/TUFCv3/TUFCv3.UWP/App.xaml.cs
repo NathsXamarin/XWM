@@ -52,7 +52,7 @@ namespace TUFCv3.UWP
             // just ensure that the window is active
             if (rootFrame == null)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
+                // Create a Frame to act as the navigate context and navigate to the first page
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
@@ -69,8 +69,8 @@ namespace TUFCv3.UWP
 
             if (rootFrame.Content == null)
             {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
+                // When the navigate stack isn't restored navigate to the first page,
+                // configuring the new page by passing required information as a navigate
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
@@ -79,10 +79,10 @@ namespace TUFCv3.UWP
         }
 
         /// <summary>
-        /// Invoked when Navigation to a certain page fails
+        /// Invoked when Navigate to a certain page fails
         /// </summary>
-        /// <param name="sender">The Frame which failed navigation</param>
-        /// <param name="e">Details about the navigation failure</param>
+        /// <param name="sender">The Frame which failed navigate</param>
+        /// <param name="e">Details about the navigate failure</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);

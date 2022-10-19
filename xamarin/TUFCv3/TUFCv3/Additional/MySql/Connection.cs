@@ -7,10 +7,10 @@ using TUFCv3.Additional.Archive;
 
 namespace TUFCv3.Additional.MySql
 {
-    public class Connection
+    public class Connection : IConnection
     {
-        public MySqlConnection connection;      // Connection to the MySQL database 
-        public string errorMessage;             // Error message
+        public MySqlConnection connection { get; set; }     // Connection to the MySQL database 
+        public string errorMessage { get; set; }            // Error message
 
         public Connection()
         {
@@ -20,13 +20,13 @@ namespace TUFCv3.Additional.MySql
         /*  ConnecionString()
             Create the connection string for the MysQL server 'xwm-mysql'  */
         void ConnectionString()
-        { 
+        {
             connection = new MySqlConnection
                 (
                     "Server=xwm-mysql; " +
                     "Database=tufc; " +
                     "User ID=admin; " +
-                    "Password=adm1n; " 
+                    "Password=adm1n; "
                 );
         }
 
@@ -55,7 +55,7 @@ namespace TUFCv3.Additional.MySql
         /*  OpenConnection()
             Open the connection, ready for queries */
         public bool OpenConnection()
-        {            
+        {
             try
             {                                       // Try to connect:
                 connection.Open();                  //  - open the connection,
@@ -65,7 +65,7 @@ namespace TUFCv3.Additional.MySql
             {
                 errorMessage =  ex.Message;         //  - set the error errorMessage,
                 return false;                       //  - and return false
-            }  
+            }
         }
     }
 }

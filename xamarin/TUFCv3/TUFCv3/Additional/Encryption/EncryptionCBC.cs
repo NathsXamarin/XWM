@@ -8,17 +8,25 @@ using System.Text;
 
 namespace TUFCv3.Additional.Encryption
 {
-    public class EncryptionCbc
+    public class EncryptionCbc : IEncryptionCbcCombo
     {
-        Aes encryptor;                          // The encryption object, configured for Cipher Block Chain. 
+        public Aes encryptor { get; set; }          // The encryption object, configured for Cipher Block Chain.    
+        public string Password { get; set; }        // CBC password
+        public string Iv { get; set; }              // CBC IV
 
-        public EncryptionCbc()
+
+
+        /*  Constructor 
+            Get the Password and IV
+            Call the method CreateEncryptor() to creaete a CBC encryptor 
+         */
+        public EncryptionCbc(string _password = "password!", string _iv = "TopSecretVector!")
         {
-            string password = "password!";      // Static encryption password                    
-            string iv = "TopSecretVector!";     // On a live system 'iv' should be randomly generated and saved to a secure location.
+            string Password = _password;                    // Make the password argument public                 
+            string Iv = _iv;                                // Make the IV argument public (must be 16 characters)
 
-            CreateEncryptor(password, iv);      // Create the object 'encryptor'                
-            TestEncryption();                   // Test the encryption method ('comment out', but do not delete) 
+            CreateEncryptor(Password, Iv);                  // Create the object 'encryptor'                
+            TestEncryption("Message to encrypt/decrypt");   // Test the encryption method ('comment out', but do not delete) 
         }
 
 
@@ -26,16 +34,16 @@ namespace TUFCv3.Additional.Encryption
         /*  CreateEncryptor()
             Create and configure the object 'encryptor'
             that encodes/decodes messages  */
-        void CreateEncryptor(string password, string iv)
+        public void CreateEncryptor(string Password, string Iv)
         {
             encryptor = Aes.Create();                                               // Create the AES encryption object.
             encryptor.Mode = CipherMode.CBC;                                        // Set encryption method to Cyclic Block Chain.
 
             SHA256 sha256 = SHA256.Create();                                 // Set the Key.
-            byte[] key = sha256.ComputeHash(Encoding.ASCII.GetBytes(password));
+            byte[] key = sha256.ComputeHash(Encoding.ASCII.GetBytes(Password));
             encryptor.Key = key;
 
-            byte[] ivBytes = Encoding.ASCII.GetBytes(iv);                           // Set the IV.
+            byte[] ivBytes = Encoding.ASCII.GetBytes(Iv);                           // Set the IV.
             encryptor.IV = ivBytes;
         }
 
@@ -65,7 +73,7 @@ namespace TUFCv3.Additional.Encryption
 
         /* DecryptText()
             Decrypt encrypted text  */
-        string DecryptText(string cipherText)
+        public string DecryptText(string cipherText)
         {
             string plainText = string.Empty;        // Will contain the decrypted text
 
@@ -93,10 +101,10 @@ namespace TUFCv3.Additional.Encryption
 
 
         // TestEncryption() - only used during testing 
-        void TestEncryption()
+        public void TestEncryption(string message)
         {
-            string encryptedMessage = EncryptText("Message to encrypt/decrypt");     // Encrypt a errorMessage
-            string decryptedMessage = DecryptText(encryptedMessage);                 // Decrypt the errorMessage
+            string encryptedMessage = EncryptText(message);                 // Encrypt a errorMessage
+            string decryptedMessage = DecryptText(encryptedMessage);        // Decrypt the errorMessage
         }
     }
 }

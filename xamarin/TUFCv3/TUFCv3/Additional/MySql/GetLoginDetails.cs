@@ -4,25 +4,25 @@ using TUFCv3.Additional.Archive;
 using TUFCv3.Additional.MySql;
 using MySqlConnector;
 using System;
-using TUFCv3.Models;
+using TUFCv3.Models.Users;
 
 namespace TUFCv3.Additional.MySql
 {
-    public class GetLoginDetails
+    public class GetLoginDetails : IGetMySqlData
     {
-        MySql.Connection mySqlConn = new MySql.Connection();        // Connects to the database
+        MySql.IConnection mySqlConn = new MySql.Connection();       // Connects to the database
         MySqlDataReader reader;                                     // Reads from the database
 
         User databaseUser = new User();                             // User data, retrieved from the database.
 
-        public string errorMessage;                                 // Error message.
+        public string errorMessage { get; set; }                    // Error message.
 
 
         /*  RunQuery() 
-            Calls the other methods in this class, to get the user's data. */
-        public User RunQuery(User loginUser)
-        {                          
-            if (   !OpenConnection()
+            Calls the other methods in this class, to get the loginUser's data. */
+        public User RunQuery(IUser loginUser)
+        {
+            if (!OpenConnection()
                 || !GetData(loginUser)
                 || !ConvertToProperties())
             {
@@ -35,9 +35,9 @@ namespace TUFCv3.Additional.MySql
 
         // OpenConnection()
         /*  Open the connection to the database */
-        bool OpenConnection()
+        public bool OpenConnection()
         {
-            if(mySqlConn.OpenConnection() == false)         // If a connection to the database can not be opened: 
+            if (mySqlConn.OpenConnection() == false)         // If a connection to the database can not be opened: 
             {
                 errorMessage = mySqlConn.errorMessage;      //  - set the error message,
                 return false;                               //  - and return false.
@@ -49,9 +49,9 @@ namespace TUFCv3.Additional.MySql
         // GetData()
         /*  Send the SQL command, to get the users details
             the returned data is stored as the public variable 'reader' */
-        bool GetData(User loginUser)
-        {                                                           
-            string sqlCmd =                                         // Create the MySQL query, to get user info from the database.
+        public bool GetData(IUser loginUser)
+        {
+            string sqlCmd =                                         // Create the MySQL query, to get loginUser info from the database.
                 "SELECT email, password, createDate " +
                 "FROM User " +
                 "WHERE email = @email ";
@@ -77,27 +77,27 @@ namespace TUFCv3.Additional.MySql
 
 
         // ConvertToProperties()
-        /*  Add the user details, returned from the database, 
+        /*  Add the loginUser details, returned from the database, 
             to properties in the object 'databaseUser' */
-        bool ConvertToProperties()
+        public bool ConvertToProperties()
         {
             try
             {
-                if (reader.Read())                                              // If the user is found, add the returned data to databaseUser properties
+                if (reader.Read())                                              // If the loginUser is found, add the returned data to databaseUser properties
                 {
                     databaseUser.Email      = reader.GetValue(0).ToString();    // There is an alternative method GetString(),  
                     databaseUser.Password   = reader.GetValue(1).ToString();    //  but it causes errors when null values 
                     databaseUser.CreateDate = reader.GetValue(2).ToString();    //  are returned from the database.
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorMessage = ex.Message;
                 return false;
             }
 
             mySqlConn.connection.Close();
-            return true;            
+            return true;
         }
     }
 }
