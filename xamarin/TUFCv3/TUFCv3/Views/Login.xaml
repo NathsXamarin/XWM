@@ -30,9 +30,7 @@
             </Grid>
 
             <Button Text="Login"      Command="{Binding cmdLogin}"      CommandParameter="{x:Type Views:MainMenu}"   Margin="75,10" />
-            <Button Text="New User"   Command="{Binding 
-                
-                }" CommandParameter="{x:Type Views:NewUser}"    Margin="75,10" />
+            <Button Text="New User"   Command="{Binding cmdNavigation}" CommandParameter="{x:Type Views:NewUser}"    Margin="75,10" />
 
         </StackLayout>            
     </ContentPage.Content>

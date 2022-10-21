@@ -13,7 +13,7 @@ namespace TUFCv3.Additional.Navigation
             Naviagate to a new page  */
         public async Task GoToPage(Type selectedPage)
         {
-            Page page = (Page)Activator.CreateInstance(selectedPage);       // Create the page
+            Page page = (Page)Activator.CreateInstance(selectedPage);               // Create the page
             await Application.Current.MainPage.Navigation.PushModalAsync(page);     //  and navigate to it.
         }
     }
