@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System;
 using System.Windows.Input;
-using TUFCv3.Additional;
 using TUFCv3.Models.Users;
 using TUFCv3.Additional.Navigation;
+using TUFCv3.Additional.AuthenticateUser;
 
 namespace TUFCv3.ViewModels
 {
@@ -24,9 +24,9 @@ namespace TUFCv3.ViewModels
 
         // Constructor
         public vmLogin()
-        {
-            loginUser = new User();              // Instantiate the object 'loginUser' (which is bound to Login.xaml entry fields)
-            DefineNavigationCommands();     // Create navigate commands for button click events 
+        {            
+            loginUser = Factory.CreateUser();       // Instantiate the object 'loginUser' (which is bound to Login.xaml entry fields)
+            DefineNavigationCommands();             // Create navigate commands for button click events 
         }
 
 
@@ -52,16 +52,18 @@ namespace TUFCv3.ViewModels
             cmdLogin = new Command<Type>(
                 execute: async (Type selectedPage) =>
                 {
-                    AuthenticateUser authenticateUser = new AuthenticateUser();         // Create AuthenticateUser object 
-                    bool authenticated = await authenticateUser.Authenticate(loginUser);     // Check password
+                    // AuthenticateUser authenticateUser = new AuthenticateUser();         
+                    IAuthenticateUser authenticateUser = Factory.CreateAuthenticateUser();      // Create IAuthenticateUser object 
 
-                    if (authenticated)                                                  // If the password is okay:
+                    bool authenticated = await authenticateUser.Authenticate(loginUser);        // Check password
+
+                    if (authenticated)                                                          // If the password is okay:
                     {
-                        await navigate.GoToPage(selectedPage);                        //  - go to MainMenu
+                        await navigate.GoToPage(selectedPage);                                  //  - go to MainMenu
                     }
                     else
-                    {                                                                   // If password doesn't match:
-                        await App.Current.MainPage.DisplayAlert                         //   - display the authentication error errorMessage.
+                    {                                                                           // If password doesn't match:
+                        await App.Current.MainPage.DisplayAlert                                 //   - display the authentication error errorMessage.
                         ("Login error", authenticateUser.errorMessage, "Okay");
                     }
                 });

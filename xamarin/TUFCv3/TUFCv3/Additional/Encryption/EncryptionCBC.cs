@@ -18,8 +18,7 @@ namespace TUFCv3.Additional.Encryption
 
         /*  Constructor 
             Get the Password and IV
-            Call the method CreateEncryptor() to creaete a CBC encryptor 
-         */
+            Call the method CreateEncryptor() to creaete a CBC encryptor  */
         public EncryptionCbc(string _password = "password!", string _iv = "TopSecretVector!")
         {
             string Password = _password;                    // Make the password argument public                 

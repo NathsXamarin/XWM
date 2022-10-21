@@ -10,17 +10,18 @@ namespace TUFCv3.Additional.MySql
 {
     public class GetLoginDetails : IGetMySqlData
     {
-        MySql.IConnection mySqlConn = new MySql.Connection();       // Connects to the database
+        MySql.IConnection mySqlConn = Factory.CreateConnection();
         MySqlDataReader reader;                                     // Reads from the database
 
-        User databaseUser = new User();                             // User data, retrieved from the database.
+        // User databaseUser = new User();                             
+        IUser databaseUser = Factory.CreateUser();                   // User data, retrieved from the database.
 
         public string errorMessage { get; set; }                    // Error message.
 
 
         /*  RunQuery() 
             Calls the other methods in this class, to get the loginUser's data. */
-        public User RunQuery(IUser loginUser)
+        public IUser RunQuery(IUser loginUser)
         {
             if (!OpenConnection()
                 || !GetData(loginUser)

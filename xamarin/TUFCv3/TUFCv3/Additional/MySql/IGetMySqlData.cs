@@ -8,6 +8,6 @@ namespace TUFCv3.Additional.MySql
         bool ConvertToProperties();
         bool GetData(IUser loginUser);
         bool OpenConnection();
-        User RunQuery(IUser loginUser);
+        IUser RunQuery(IUser loginUser);
     }
 }
