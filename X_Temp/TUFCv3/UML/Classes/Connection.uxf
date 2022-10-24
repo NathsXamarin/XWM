@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>15</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>885</x>
+      <y>465</y>
+      <w>390</w>
+      <h>375</h>
+    </coordinates>
+    <panel_attributes>*Connection.cs*
+--
+public MySqlConnection connection
+public string errorMessage
+
+--
+Connection()
+bool TestConnection()
+bool OpenConnection()
+
+--
+Responsibilities:
+ - Create the connection string 
+    to the database 'xwm-mysql'.
+    
+ - Open a connection to the database.  </panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

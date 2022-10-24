@@ -1,0 +1,1 @@
+D:\XWM\xamarin\TUFCv3\TUFCv3.UWP\TUFCv3.UWP.csproj;x64
