@@ -25,7 +25,9 @@ namespace TUFCv3.Additional.Encryption
             string Iv = _iv;                                // Make the IV argument public (must be 16 characters)
 
             CreateEncryptor(Password, Iv);                  // Create the object 'encryptor'                
-            TestEncryption("Message to encrypt/decrypt");   // Test the encryption method ('comment out', but do not delete) 
+            // TestEncryption("Message to encrypt/decrypt");   // Test the encryption method ('comment out', but do not delete) 
+            TestEncryption("user123");   // Test the encryption method ('comment out', but do not delete) 
+
         }
 
 

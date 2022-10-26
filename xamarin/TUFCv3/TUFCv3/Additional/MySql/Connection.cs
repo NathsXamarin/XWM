@@ -19,7 +19,7 @@ namespace TUFCv3.Additional.MySql
 
         /*  ConnecionString()
             Create the connection string for the MysQL server 'xwm-mysql'  */
-        void ConnectionString()
+        public void ConnectionString()
         {
             connection = new MySqlConnection
                 (
