@@ -11,24 +11,27 @@ namespace TUFCv3.Additional.MySql
     public class GetLoginDetails : IGetMySqlData
     {
         MySql.IConnection mySqlConn = Factory.CreateConnection();
-        MySqlDataReader reader;                                     // Reads from the database
+        public MySqlDataReader reader { get; set; }     // Reads from the database
 
         // User databaseUser = new User();                             
-        IUser databaseUser = Factory.CreateUser();                   // User data, retrieved from the database.
+        IUser databaseUser = Factory.CreateUser();      // User data, retrieved from the database.
 
-        public string errorMessage { get; set; }                    // Error message.
+        public string errorMessage { get; set; }        // Error message.
 
 
         /*  RunQuery() 
             Calls the other methods in this class, to get the loginUser's data. */
         public IUser RunQuery(IUser loginUser)
         {
-            if (!OpenConnection()
+            if (   !OpenConnection()
                 || !GetData(loginUser)
                 || !ConvertToProperties())
             {
                 databaseUser = null;
             }
+
+            CloseConnection();
+
             return databaseUser;
         }
 
@@ -68,7 +71,7 @@ namespace TUFCv3.Additional.MySql
                 catch (Exception ex)                                // If getting a valid row from the database does not work
                 {
                     mySqlConn.errorMessage = ex.Message;            //  and set the error errorMessage
-                    mySqlConn.connection.Close();
+                    CloseConnection();
                     return false;
                 }
 
@@ -95,10 +98,18 @@ namespace TUFCv3.Additional.MySql
             {
                 errorMessage = ex.Message;
                 return false;
-            }
-
-            mySqlConn.connection.Close();
+            }            
             return true;
         }
+
+
+
+        /*  CloseConnection()  
+            Closes the databse connection to the database xwm-mysql  */
+        public void CloseConnection()
+        {
+            mySqlConn.connection.Close();
+        }
+
     }
 }
