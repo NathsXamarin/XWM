@@ -18,8 +18,15 @@ namespace TUFCv3.Additional.AuthenticateUser
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public class AuthenticateUser : IAuthenticateUser
     {
-        private IUser databaseUser = Factory.CreateUser();      // User details from the database (compared to loginUser to authenticate) 
-        public string errorMessage { get; set; }                // Authentication errorMessage
+        public IUser databaseUser { get; set; }         // User details from the database (compared to loginUser to authenticate) 
+        public string errorMessage { get; set; }        // Authentication errorMessage
+
+
+        /*  Constructor */
+        public AuthenticateUser()
+        {
+            databaseUser = Factory.CreateUser();        // Instantiate the user databaseUser
+        }
 
 
         /*  Authenticate()         
@@ -29,7 +36,7 @@ namespace TUFCv3.Additional.AuthenticateUser
                 - if authenication is successful, return True.  */
         public async Task<bool> Authenticate(IUser loginUser)
         {
-            if (!GetDatabaseUser(loginUser)          // If loginUser details can not be retrieved from the database
+            if (   !GetDatabaseUser(loginUser)          // If loginUser details can not be retrieved from the database
                 || !ComparePasswords(loginUser))        //  or the login password is incorrect
                 return false;                           //  return False.
             else
@@ -45,14 +52,14 @@ namespace TUFCv3.Additional.AuthenticateUser
         public bool GetDatabaseUser(IUser loginUser)
         {
             IGetMySqlData getLoginDetails = Factory.CreateGetLoginDetails();
-            databaseUser = getLoginDetails.RunQuery(loginUser);      // Get loginUser object from the database.
+            databaseUser = getLoginDetails.RunQuery(loginUser);     // Get loginUser object from the database.
 
-            if (databaseUser == null)                            // If the loginUser can not be found: 
+            if (databaseUser == null)                               // If the loginUser can not be found: 
             {
-                errorMessage = getLoginDetails.errorMessage;            //  - create error message
-                return false;                                   //  - and return False.
+                errorMessage = getLoginDetails.errorMessage;        //  - create error message
+                return false;                                       //  - and return False.
             }
-            return true;                                        // If loginUser data is okay, return True.
+            return true;                                            // If loginUser data is okay, return True.
         }
 
 
@@ -64,7 +71,7 @@ namespace TUFCv3.Additional.AuthenticateUser
         public bool ComparePasswords(IUser loginUser)
         {
             IEncryptionCbcCombo encryption = Factory.CreateEncryptionCbcCombo();
-            string encryptedLoginPassword = encryption.EncryptText(loginUser.Password);   // Encrypt the loginUser's login password.
+            string encryptedLoginPassword = encryption.EncryptText(loginUser.Password);     // Encrypt the loginUser's login password.
 
             if (encryptedLoginPassword != databaseUser.Password)                            // If the login and database passwords do not match:
             {

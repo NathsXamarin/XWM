@@ -1,9 +1,9 @@
-﻿using MySqlConnector;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
 using TUFCv3.Additional.Archive;
+using System;
+using MySqlConnector;
 
 namespace TUFCv3.Additional.MySql
 {
@@ -19,7 +19,7 @@ namespace TUFCv3.Additional.MySql
 
         /*  ConnecionString()
             Create the connection string for the MysQL server 'xwm-mysql'  */
-        void ConnectionString()
+        public void ConnectionString()
         {
             connection = new MySqlConnection
                 (

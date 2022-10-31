@@ -25,7 +25,9 @@ namespace TUFCv3.Additional.Encryption
             string Iv = _iv;                                // Make the IV argument public (must be 16 characters)
 
             CreateEncryptor(Password, Iv);                  // Create the object 'encryptor'                
-            TestEncryption("Message to encrypt/decrypt");   // Test the encryption method ('comment out', but do not delete) 
+            // TestEncryption("Message to encrypt/decrypt");   // Test the encryption method ('comment out', but do not delete) 
+
+            TestEncryption("Decrypted message");   // Test the encryption method ('comment out', but do not delete) 
         }
 
 
@@ -99,7 +101,8 @@ namespace TUFCv3.Additional.Encryption
         }
 
 
-        // TestEncryption() - only used during testing 
+        /*  TestEncryption()  
+            Only used during manual testing */
         public void TestEncryption(string message)
         {
             string encryptedMessage = EncryptText(message);                 // Encrypt a errorMessage
