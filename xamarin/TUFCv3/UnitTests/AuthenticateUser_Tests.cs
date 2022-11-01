@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit.Sdk;
 using TUFCv3;
 using TUFCv3.Additional.AuthenticateUser;
 using TUFCv3.Models.Users;
 using Xunit;
-using Xunit.Sdk;
+
 
 namespace UnitTests
 {
@@ -21,13 +22,12 @@ namespace UnitTests
         public void GetDatabaseUser_ShouldReturnTrue()
         {
             // Arrange            
-            bool expected = true;      
+            bool expected = true;
 
-            // Act            
-            IUser testUser = Factory.CreateUser();                          // Create the methods User argument
+            IUser testUser = Factory.CreateUser();                          // Create the method's User argument
             testUser.Email = "user@mail.com";                               //  including the email property 'user@mail.com'
 
-            //  - call the method being tested
+            // Act            
             bool actual = authenticateUser.GetDatabaseUser(testUser);       // Call the method being tested
 
             // Assert
